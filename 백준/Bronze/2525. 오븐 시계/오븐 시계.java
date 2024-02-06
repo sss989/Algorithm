@@ -13,7 +13,7 @@ public class Main {
         int c = Integer.parseInt(br.readLine());
 
         int bcTotal = b + c;
-        
+
         int h = (a + bcTotal / 60) % 24;
         int m = bcTotal % 60;
 
