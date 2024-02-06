@@ -17,12 +17,12 @@ public class Main {
         }
         Arrays.sort(arr, new Comparator<String>() {
             @Override
-            public int compare(String o1, String o2) {
-                if(o1.length()==o2.length()){
-                    return o1.compareTo(o2);
+            public int compare(String s1, String s2) {
+                if(s1.length()==s2.length()){
+                    return s1.compareTo(s2);
                 }
                 else {
-                    return o1.length() - o2.length();
+                    return s1.length() - s2.length();
                 }
             }
         });
