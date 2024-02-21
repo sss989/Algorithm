@@ -1,7 +1,5 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -17,29 +15,29 @@ public class Main {
             int[] arrA = new int[a];
             int[] arrB = new int[b];
 
-            // arrA 배열 입력
+            // 배열 A 입력
             input = reader.readLine().split(" ");
             for (int i = 0; i < a; i++) {
                 arrA[i] = Integer.parseInt(input[i]);
             }
 
-            // arrB 배열 입력
+            // 배열 B 입력
             input = reader.readLine().split(" ");
             for (int i = 0; i < b; i++) {
                 arrB[i] = Integer.parseInt(input[i]);
             }
 
-            // 정렬
+            // 오름차순 정렬
             Arrays.sort(arrA);
             Arrays.sort(arrB);
 
-            int count = 0; // arrA가 arrB보다 큰 쌍의 개수
+            int count = 0; // A > B인 쌍의 개수
 
-            // 이분 탐색으로 arrB에서 arrA[i]보다 큰 값의 위치 찾음
+            // 이분 탐색으로 B에서 A[i]보다 큰 값의 위치 찾음
             for (int i = 0; i < a; i++) {
                 int index = binarySearch(arrB, arrA[i], b);
 
-                // arrA[i]보다 작은 원소 개수 계산 후 count에 저장
+                // A[i]보다 작은 원소 개수 계산 후 count에 저장
                 count += index;
             }
 
@@ -58,7 +56,7 @@ public class Main {
         while (left <= right) {
             int mid = left + (right - left) / 2;
 
-            // 중앙값이 목표값 이상일 경우, 찾은 인덱스를 result에 저장하고 왼쪽 부분을 계속 탐색
+            // 중앙값이 목표값 이상이면 찾은 인덱스를 result에 저장하고, 왼쪽 부분을 계속 탐색
             if (arr[mid] >= target) {
                 result = mid;
                 right = mid - 1;
