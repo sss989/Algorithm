@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,19 +9,23 @@ public class Main {
         sc.nextLine();
 
         for (int i = 1; i <= N; i++) {
-            StringBuilder result = new StringBuilder();
+            Stack<String> stack = new Stack<>();
 
-            result.append("Case #").append(i).append(": ");
+            System.out.print("Case #" + i + ": ");
 
             String[] word = sc.nextLine().split(" ");
 
-            for (int j = word.length - 1; j >= 0; j--) {
-                result.append(word[j]);
-                if (j > 0) {
-                    result.append(" ");
+            for (String w : word) {
+                stack.push(w);
+            }
+
+            while (!stack.isEmpty()) {
+                System.out.print(stack.pop());
+                if (!stack.isEmpty()) {
+                    System.out.print(" ");
                 }
             }
-            System.out.println(result);
+            System.out.println();
         }
 
     }
