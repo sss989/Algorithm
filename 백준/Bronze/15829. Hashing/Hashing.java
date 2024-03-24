@@ -1,29 +1,27 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    static final int M = 1234567891;
 
-        int L = sc.nextInt();
-        String str = sc.next();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        long answer = 0; // 정답을 저장할 변수
+        int L = Integer.parseInt(br.readLine());
+        String str = br.readLine();
+
+        long sum = 0;
+        long pow = 1;
+
+        char[] arr = str.toCharArray();
 
         for (int i = 0; i < L; i++) {
-            char c = str.charAt(i); // 문자열의 현재 위치 문자 가져오기
-            int ascii = (int) c - 96; // 현재 문자의 아스키 코드 값 
-            answer += (long) ascii * power(31, i); // 현재 문자의 해시 값을 누적
+            sum += (arr[i] - 'a' + 1) * pow % M; // 분배 법칙
+            pow = pow * 31 % M; // 분배 법칙
         }
 
-        System.out.println(answer % 1234567891);
-    }
-
-    // 거듭제곱 함수
-    public static long power(int base, int exponent) {
-        long result = 1;
-        for (int i = 0; i < exponent; i++) {
-            result *= base;
-        }
-        return result;
+        long hash = sum % M;
+        System.out.println(hash);
     }
 }
